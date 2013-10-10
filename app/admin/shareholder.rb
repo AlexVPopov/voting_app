@@ -1,9 +1,13 @@
 ActiveAdmin.register Shareholder do
   
   index do
-    column :uid
+    column "UID", :uid
     column :name
-    column :shares
+    column :shares, sortable: :shares do |shareholder|
+      div class: "shares" do
+        number_with_delimiter shareholder.shares
+      end
+    end
     default_actions
   end
 
